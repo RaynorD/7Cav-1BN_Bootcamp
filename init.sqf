@@ -1,47 +1,23 @@
 /*
 USAGE POLICY: 
-This mission and all its included scripts and assets are prohibited from being used or distributed, in whole or in part, outside of the 7th Cavalry without explicit written permission from the author (Raynor.D, or if he is no longer in the Cav, the 7th Cavalry 1st Battalion Battlestaff lead, who can be found on www.7Cav.us under Milpacs). The function noted in init.sqf as being written by Killzone Kid does not fall under this usage policy, but under Killzone Kid's usage policy (if one exists).
+This mission and all its included scripts and assets are prohibited from being used or distributed, in whole or in part, outside of the 7th Cavalry without explicit written permission from the author (7th Cavalry member Raynor.D, or if he is no longer a member of the 7th Cavalry, the 7th Cavalry 1st Battalion Battlestaff lead, who can be found on www.7Cav.us). The function noted in init.sqf as being written by Killzone Kid does not fall under this usage policy, but under Killzone Kid's usage policy (if one exists).
 
 TODO:
-
-	Fixes
+	Broken stuff
 		Simple/Non locality issues
+			-
 			
 		Locality issues
 			-
 			
-	Feature/low priority
-		grad sequence check action, missing after respawn?
+	To investigate
+		grad sequence action, missing after respawn?
 		not able to see hit marks w/ JIP
 		Hit UI for recruits?
 		cleanup script after grad sequence		
 		Possibly not possible: grenade range damage EH to check grenade is within 5m of target
-			
 		
 	DONE:
-		AI DI loadout
-		update map
-		Put camera over shooter's head
-		DI's switch to OCP, Cap (tan)
-		Recruit have radio menu
-		troopers can't get loadouts (vest was too small for more than two mags)
-		publicVariable killhouse error (irrelevant, don't use popup anymore)
-		boxes not empty	
-		Remove practice slots
-		6 cadre
-		grenade lanes 2 and 3 range stay down, action doesn't raise
-		 	popup getting set false somewhere, breaking grenade/bounding
-		 	bounding range targets stay down
-		delete H barriers under class canopy
-		killhouse
-		 	two killhouse light at front and end
-		 	killhouse planks to end, over ending spot
-		One arsenal, in house
-		grenade range targets move back
-			sandbags back 10 m
-			bunker back 10m
-		remove aircraft, some vehicles
-		Bounding range firing at students, at boards
 
 	Low priority
 		Target number icons in camera
@@ -49,6 +25,8 @@ TODO:
 		5 grenade targets
 
 Changelog:
+7.7
+	ACRE Compatibility
 7.6:
 	Added two additional rifle range lanes
 	Added range cameras with shot tracing

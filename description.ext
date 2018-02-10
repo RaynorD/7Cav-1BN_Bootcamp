@@ -1,7 +1,7 @@
-briefingName = "1BN Bootcamp Grounds v7.6.1690";
+briefingName = "1BN Bootcamp Grounds v7.7.0";
 OnLoadName = "1BN Bootcamp Grounds";
 OnLoadMission = "Prove yourself and join the ranks of the 7th Cavalry.";
-author = "=7Cav=CW2.Raynor.D";
+author = "=7Cav=WO1.Raynor.D";
 loadScreen = image\loadScreen.paa;
 overviewText = "Prove yourself and join the ranks of the 7th Cavalry.";
 enableDebugConsole = 1;

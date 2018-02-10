@@ -6,28 +6,18 @@ If Ranger put this in INIT
 id = ["Ranger", this] call compile preprocessFileLineNumbers "cScripts\Loadouts\cStart.sqf"; 
 */
 
-	private ["_type", "_unit","_riflemag","_grenade","_smokegrenade"];
-
-	_type = _this select 0;
-	_unit = _this select 1;
-	//_unit switchMove "";
+params ["_type", "_unit"];
 	
 // ====================================================================================
-// Wep Defines	
 	
-	_riflemag = CLASS_MAGAZINE;
-	_grenade = CLASS_GRENADE;
-	_uniform = CLASS_UNIFORM;
-	_weapon = CLASS_WEAPON;
+removeallweapons _unit; 
+removeGoggles _unit;  
+_unit unassignitem "NVGoggles"; 
+_unit removeitem "NVGoggles"; 
+removeVest _unit;				
 	
-	removeallweapons _unit; 
-	removeGoggles _unit;  
-	_unit unassignitem "NVGoggles"; 
-	_unit removeitem "NVGoggles"; 
-	removeVest _unit;				
-	
-	switch (_type) do
-	{		
+switch (_type) do
+{		
 // ====================================================================================
 	case "all": 
 	{	
@@ -45,23 +35,22 @@ id = ["Ranger", this] call compile preprocessFileLineNumbers "cScripts\Loadouts\
 		removeHeadgear _unit;
 		removeGoggles _unit;
 
-		_unit forceAddUniform _uniform;
+		_unit forceAddUniform CLASS_UNIFORM;
 		for "_i" from 1 to 3 do {_unit addItemToUniform CLASS_BANDAGE};
 		for "_i" from 1 to 2 do {_unit addItemToUniform CLASS_MORPHINE};
 		if(!(_unit getVariable ["ace_hasearplugsin",false])) then {
 			_unit addItemToUniform CLASS_EARPLUGS;
 		};
 		_unit addVest CLASS_VEST_CADRE;
-		for "_i" from 1 to 2 do {_unit addItemToVest _riflemag;};
+		for "_i" from 1 to 2 do {_unit addItemToVest CLASS_MAGAZINE;};
 		_unit addHeadgear CLASS_HEAD_CADRE;
 
-		_unit addWeapon _weapon;
+		_unit addWeapon CLASS_WEAPON;
 		_unit addWeapon "Rangefinder";
 
 		_unit linkItem "ItemMap";
 		_unit linkItem "ItemCompass";
 		_unit linkItem "tf_microdagr";
-		_unit linkItem "tf_anprc152";
 		
 		_pweap = primaryweapon _unit;
 		_unit selectweapon _pweap;
@@ -79,28 +68,27 @@ id = ["Ranger", this] call compile preprocessFileLineNumbers "cScripts\Loadouts\
 		removeHeadgear _unit;
 		removeGoggles _unit;
 
-		_unit forceAddUniform CLASS_UNIFORM_DI;
+		_unit forceAddUniform CLASSCLASS_UNIFORM_DI;
 		for "_i" from 1 to 3 do {_unit addItemToUniform CLASS_BANDAGE;};
 		for "_i" from 1 to 2 do {_unit addItemToUniform CLASS_MORPHINE;};
 		if(!(_unit getVariable ["ace_hasearplugsin",false])) then {
 			_unit addItemToUniform CLASS_EARPLUGS;
 		};
 		_unit addVest CLASS_VEST_DI;
-		for "_i" from 1 to 4 do {_unit addItemToVest _riflemag;};
-		for "_i" from 1 to 4 do {_unit addItemToVest _grenade;};
+		
+		for "_i" from 1 to 4 do {_unit addItemToVest CLASS_MAGAZINE;};
+		for "_i" from 1 to 4 do {_unit addItemToVest CLASS_GRENADE;};
 		_unit addHeadgear CLASS_HEAD_DI;
 
-		_unit addWeapon _weapon;
+		_unit addWeapon CLASS_WEAPON;
 		_unit addWeapon "Rangefinder";
 
 		_unit linkItem "ItemMap";
 		_unit linkItem "ItemCompass";
-		_unit linkItem "tf_anprc152";
 		_unit linkItem "ItemcTab";
 		
 		_pweap = primaryweapon _unit;
 		_unit selectweapon _pweap;
-
 	};
 	
 // ====================================================================================
@@ -115,19 +103,18 @@ id = ["Ranger", this] call compile preprocessFileLineNumbers "cScripts\Loadouts\
 		removeHeadgear _unit;
 		removeGoggles _unit;
 
-		_unit forceAddUniform _uniform;
+		_unit forceAddUniform CLASS_UNIFORM;
 		if(!(_unit getVariable ["ace_hasearplugsin",false])) then {
 			_unit addItemToUniform CLASS_EARPLUGS;
 		};
 		_unit addVest CLASS_VEST_TROOPER;
+		
 		_unit addHeadgear CLASS_HEAD_TROOPER;
 		
-		_unit addWeapon _weapon;
+		_unit addWeapon CLASS_WEAPON;
 
 		_unit linkItem "ItemMap";
 		_unit linkItem "ItemCompass";
-		_unit linkItem "tf_anprc152";
-
 	};
 // ====================================================================================
 	case "CLR":

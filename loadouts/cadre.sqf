@@ -27,4 +27,3 @@ _unit addWeapon "Rangefinder";
 
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
-_unit linkItem "tf_anprc152";

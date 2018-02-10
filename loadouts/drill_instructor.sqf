@@ -19,6 +19,7 @@ if(!(_unit getVariable ["ACE_hasEarPlugsin", false])) then {
 	_unit addItemToUniform CLASS_EARPLUGS;
 };
 _unit addVest CLASS_VEST_DI;
+
 for "_i" from 1 to 4 do {_unit addItemToVest CLASS_MAGAZINE;};
 for "_i" from 1 to 4 do {_unit addItemToVest CLASS_GRENADE;};
 _unit addHeadgear CLASS_HEAD_DI;
@@ -28,5 +29,4 @@ _unit addWeapon "Rangefinder";
 
 _unit linkItem "ItemMap";
 _unit linkItem "ItemCompass";
-_unit linkItem "tf_anprc152";
 _unit linkItem "ItemcTab";
