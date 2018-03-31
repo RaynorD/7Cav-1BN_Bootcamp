@@ -25,6 +25,10 @@ TODO:
 		5 grenade targets
 
 Changelog:
+7.8
+	Removed sign loadouts
+	Changed recruit vest so they can carry more stuff
+	Added ACE Arsenal (includes default loadouts)
 7.7
 	ACRE Compatibility
 7.6:
@@ -70,10 +74,6 @@ enableSaving [false, false];
 
 player setVariable ["rr_bulletCamSubscription", -1];
 
-"range_music" addPublicVariableEventHandler {
-	range_music = _this select 1;
-};
-
 Cav_setAllowDamage = {
 	player allowDamage (_this select 0);
 };
@@ -101,22 +101,7 @@ if((typeOf player) in ["B_Soldier_F"]) then {
 	([0,0,0] nearestObject 1633716) setVariable ['bis_disabled_Door_1',1,false]; 
 };
 if((typeOf player) in ["B_recon_F"]) then {
-	grad_cam_laptop addAction ["Take Picture", {
-		[true] remoteExec ["Cav_setAllowDamage"];
-		signGrad setObjectTextureGlobal [0, "image\face.paa"];
-		sleep 1;
-		_thing1 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];
-		_thing1 setVelocity [0,0,-1000];
-		sleep 0.5;
-		_thing2 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];
-		_thing2 setVelocity [0,0,-1000];
-		sleep 0.5;
-		_thing3 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];
-		_thing3 setVelocity [0,0,-1000];
-		sleep 1;
-		signGrad setObjectTextureGlobal [0, "image\bootCampgrounds.paa"];
-		[false] remoteExec ["Cav_setAllowDamage"];
-	}];	
+	grad_cam_laptop addAction ["Take Picture", {[true] remoteExec ["Cav_setAllowDamage"];signGrad setObjectTextureGlobal [0, "image\face.paa"];sleep 1;_thing1 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing1 setVelocity [0,0,-1000];sleep 0.5;_thing2 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing2 setVelocity [0,0,-1000];sleep 0.5;_thing3 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing3 setVelocity [0,0,-1000];sleep 1;signGrad setObjectTextureGlobal [0, "image\bootCampgrounds.paa"];[false] remoteExec ["Cav_setAllowDamage"];}];
 	
 	player addAction ["<t color='#00ff00'>Open Range Controls</t>",{player setVariable ["Cav_showRangeActions",true]},nil,1,false,false,"","(typeOf player == 'B_recon_F') && !(player getVariable ['Cav_showRangeActions',false])"];
 	player addAction ["<t color='#ff0000'>Collapse Range Controls</t>",{player setVariable ["Cav_showRangeActions",false]},nil,250,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"];

@@ -140,40 +140,24 @@ kh_cameraData = [
 
 // Grenade Range =====================================================================================
 
-gr_rangeData = [
-	[
-		["Grenade Range L1", nil, nil, gr_lane1_shootingPos, [gr_lane1_1, gr_lane1_2, gr_lane1_3, gr_lane1_4]],
-		["Grenade Range L2", nil, nil, gr_lane2_shootingPos, [gr_lane2_1, gr_lane2_2, gr_lane2_3, gr_lane2_4]],
-		["Grenade Range L3", nil, nil, gr_lane3_shootingPos, [gr_lane3_1, gr_lane3_2, gr_lane3_3, gr_lane3_4]]
-	],
-	nil,
-	nil
-];
+//gr_rangeData = [
+//	[
+//		["Grenade Range L1", nil, nil, gr_lane1_shootingPos, [gr_lane1_1, gr_lane1_2, gr_lane1_3, gr_lane1_4]],
+//		["Grenade Range L2", nil, nil, gr_lane2_shootingPos, [gr_lane2_1, gr_lane2_2, gr_lane2_3, gr_lane2_4]],
+//		["Grenade Range L3", nil, nil, gr_lane3_shootingPos, [gr_lane3_1, gr_lane3_2, gr_lane3_3, gr_lane3_4]]
+//	],
+//	nil,
+//	nil
+//];
+//
+//{
+//	_laneData = _x;
+//	{
+//		[_x, false] execVM "scripts\range\tgtEH.sqf";
+//		//[_x] execVM "scripts\range\grenade\handleDamage.sqf"
+//	} foreach (_laneData select 4);
+//} foreach (gr_rangeData select 0);
 
-{
-	_laneData = _x;
-	{
-		[_x, false] execVM "scripts\range\tgtEH.sqf";
-		//[_x] execVM "scripts\range\grenade\handleDamage.sqf"
-	} foreach (_laneData select 4);
-} foreach (gr_rangeData select 0);
-
-// Bounding Range =====================================================================================
-
-br_rangeData = [
-	[
-		["Bounding Range", nil, nil, nil, [br_target1, br_target2, br_target3, br_target4, br_target5, br_target6, br_target7, br_target8]]
-	],
-	nil,
-	nil
-];
-
-{
-	_laneData = _x;
-	{
-		[_x] execVM "scripts\range\tgtEH.sqf";
-	} foreach (_laneData select 4);
-} foreach (gr_rangeData select 0);
 
 // ===================================================================================================
 
