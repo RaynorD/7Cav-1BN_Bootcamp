@@ -26,7 +26,10 @@ TODO:
 
 Changelog:
 7.8
-	Removed sign loadouts
+	Removed sign loadouts and cScripts, went to eden loadouts and contextual adjustments for each range
+	Grenade ranges
+	Manuever course
+7.7.1
 	Changed recruit vest so they can carry more stuff
 	Added ACE Arsenal (includes default loadouts)
 7.7
@@ -70,6 +73,7 @@ Changelog:
 enableSaving [false, false];
 	
 [] execVM "scripts\range\init.sqf";
+[] execVM "scripts\acreSetup.sqf";
 [] execVM "scripts\tp\addTpActions.sqf";
 
 player setVariable ["rr_bulletCamSubscription", -1];
