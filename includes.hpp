@@ -11,11 +11,8 @@
 
 #define CLASS_VEST_DI "rhsusf_iotv_ocp_Teamleader"
 #define CLASS_VEST_CADRE "rhsusf_iotv_ucp_Teamleader"
-#define CLASS_VEST_TROOPER "rhsusf_iotv_ucp"
+#define CLASS_VEST_TROOPER "rhsusf_iotv_ucp_Rifleman"
 
 #define CLASS_HEAD_DI "H_Cap_usblack"
 #define CLASS_HEAD_CADRE "rhs_Booniehat_ucp"
 #define CLASS_HEAD_TROOPER "rhsusf_ach_helmet_ucp"
-
-
-
