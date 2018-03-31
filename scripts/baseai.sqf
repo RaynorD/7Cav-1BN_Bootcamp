@@ -8,7 +8,6 @@ _freezeAI = {
 _workoutGroup = [];
  
 {
-	[_x] execVM "loadouts\trooper.sqf";
 	_x call _freezeAI;
 	_workoutGroup = _workoutGroup + [_x];
 	_x allowDamage false;
