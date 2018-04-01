@@ -138,7 +138,9 @@ if(isServer) then {
 	([0,0,0] nearestObject 1633717) allowDamage false;
 	
 	{
-		_x allowDamage false;
+		if(!(typeOf _x in ["TargetP_Inf3_Acc2_NoPop_F"])) then {
+			_x allowDamage false;
+		};
 	} foreach allMissionObjects "All";
 	
 	{
@@ -156,10 +158,10 @@ if(isServer) then {
 	
 	{
 		_x setObjectTextureGlobal	[0, "image\range_target.paa"];
-	} foreach allMissionObjects "TargetP_Inf2_Acc2_NoPop_F";
-	{
-		_x setObjectTextureGlobal	[0, "image\range_target.paa"];
-	} foreach allMissionObjects "TargetP_Inf_Acc2_NoPop_F";
+		if(typeOf _x in ["TargetP_Inf3_Acc2_NoPop_F"]) then {
+			_x addEventHandler ["Explosion", {[_this] execVM "scripts\tgt_eh_explosion.sqf"}];
+		};
+	} foreach allMissionObjects "TargetP_Inf_F";
 	
 	{
 		{
