@@ -23,6 +23,7 @@ class Header
 class CfgFunctions
 {
 	#include "taw_vd\CfgFunctions.hpp"
+	#include "cav_ranges\cfgFunctions.hpp"
 	
 	class Cav
 	{
@@ -161,7 +162,7 @@ class CfgSounds
 		titles[] = {0, ""};
 	};
 };
-
+/*
 class CfgRemoteExec
 {        
 	class Functions 
@@ -186,8 +187,7 @@ class CfgRemoteExec
 			allowedTargets=0;
 			jip = 0;
 		};
-	};        
-	/*
+	};
 	class Commands
 	{
 		class Cav_setAllowDamage
@@ -211,8 +211,6 @@ class CfgRemoteExec
 			jip = 0;
 		};
 	};
-	*/
-
 	class Commands
 	{
 		class addAction
@@ -222,6 +220,7 @@ class CfgRemoteExec
 		};
 	};
 };
+*/
 
 /*
 class RscTitles

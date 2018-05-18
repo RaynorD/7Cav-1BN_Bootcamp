@@ -71,7 +71,8 @@ Changelog:
 */
 
 enableSaving [false, false];
-	
+
+[] execVM "range_init.sqf";
 [] execVM "scripts\range\init.sqf";
 [] execVM "scripts\acreSetup.sqf";
 [] execVM "scripts\tp\addTpActions.sqf";
@@ -110,10 +111,10 @@ if((typeOf player) in ["B_recon_F"]) then {
 	player addAction ["<t color='#00ff00'>Open Range Controls</t>",{player setVariable ["Cav_showRangeActions",true]},nil,1,false,false,"","(typeOf player == 'B_recon_F') && !(player getVariable ['Cav_showRangeActions',false])"];
 	player addAction ["<t color='#ff0000'>Collapse Range Controls</t>",{player setVariable ["Cav_showRangeActions",false]},nil,250,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"];
 	
-	player addAction ["<t color='#00ff00'>    Rifle Range - Start</t>",{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,249,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 0"];
-	player addAction ["<t color='#ff0000'>    Rifle Range - Stop</t>",{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,249,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 1"];
-	player addAction ["<t color='#00ff00'>        Hit Indicators On</t>",{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,248,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 0)"];
-	player addAction ["<t color='#ff0000'>        Hit Indicators Off</t>",{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,248,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 1)"];
+	//player addAction ["<t color='#00ff00'>    Rifle Range - Start</t>",{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,249,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 0"];
+	//player addAction ["<t color='#ff0000'>    Rifle Range - Stop</t>",{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,249,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 1"];
+	//player addAction ["<t color='#00ff00'>        Hit Indicators On</t>",{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,248,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 0)"];
+	//player addAction ["<t color='#ff0000'>        Hit Indicators Off</t>",{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,248,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 1)"];
 	
 	player addAction ["<t color='#00ff00'>    Killhouse - Start</t>",{[["killhouse"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,247,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && killhouse == 0"];
 	player addAction ["<t color='#ff0000'>    Killhouse - Stop</t>",{[["killhouse"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,247,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && killhouse == 1"];
@@ -134,14 +135,14 @@ rr_targetCenterOffset = [-0.001,0.21,.3684];
 rr_targetCenterOffsetFront = [-0.001,0.15,.3684];
 
 if(isServer) then {
-	([0,0,0] nearestObject 1633716) allowDamage false;
-	([0,0,0] nearestObject 1633717) allowDamage false;
+	//([0,0,0] nearestObject 1633716) allowDamage false;
+	//([0,0,0] nearestObject 1633717) allowDamage false;
 	
-	{
-		if(!(typeOf _x in ["TargetP_Inf3_Acc2_NoPop_F"])) then {
-			_x allowDamage false;
-		};
-	} foreach allMissionObjects "All";
+	//{
+	//	if(!(typeOf _x in ["TargetP_Inf3_Acc2_NoPop_F"])) then {
+	//		_x allowDamage false;
+	//	};
+	//} foreach allMissionObjects "All";
 	
 	{
 		if(!(isPlayer _x) && (typeOf _x in ["B_Soldier_F", "B_recon_medic_F", "B_recon_F", "B_soldier_M_F"])) then {
@@ -156,19 +157,12 @@ if(isServer) then {
 		};
 	} foreach allUnits;
 	
-	{
-		_x setObjectTextureGlobal	[0, "image\range_target.paa"];
-		if(typeOf _x in ["TargetP_Inf3_Acc2_NoPop_F"]) then {
-			_x addEventHandler ["Explosion", {[_this] execVM "scripts\tgt_eh_explosion.sqf"}];
-		};
-	} foreach allMissionObjects "TargetP_Inf_F";
-	
-	{
-		{
-			_x enableSimulationGlobal false;
-			_x allowDamage false;
-		} foreach allMissionObjects _x;
-	} foreach ["ArrowMarker_L_F", "ArrowMarker_R_F"];
+	//{
+	//	_x setObjectTextureGlobal	[0, "image\range_target.paa"];
+	//	if(typeOf _x in ["TargetP_Inf3_Acc2_NoPop_F"]) then {
+	//		_x addEventHandler ["Explosion", {[_this] execVM "scripts\tgt_eh_explosion.sqf"}];
+	//	};
+	//} foreach allMissionObjects "TargetP_Inf_F";
 	
 	[] execVM "scripts\makeWalls.sqf";
 	[] execVM "scripts\baseai.sqf";
