@@ -108,26 +108,161 @@ if((typeOf player) in ["B_Soldier_F"]) then {
 if((typeOf player) in ["B_recon_F"]) then {
 	grad_cam_laptop addAction ["Take Picture", {[true] remoteExec ["Cav_setAllowDamage"];signGrad setObjectTextureGlobal [0, "image\face.paa"];sleep 1;_thing1 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing1 setVelocity [0,0,-1000];sleep 0.5;_thing2 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing2 setVelocity [0,0,-1000];sleep 0.5;_thing3 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing3 setVelocity [0,0,-1000];sleep 1;signGrad setObjectTextureGlobal [0, "image\bootCampgrounds.paa"];[false] remoteExec ["Cav_setAllowDamage"];}];
 	
-	player addAction ["<t color='#00ff00'>Open Range Controls</t>",{player setVariable ["Cav_showRangeActions",true]},nil,1,false,false,"","(typeOf player == 'B_recon_F') && !(player getVariable ['Cav_showRangeActions',false])"];
-	player addAction ["<t color='#ff0000'>Collapse Range Controls</t>",{player setVariable ["Cav_showRangeActions",false]},nil,250,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"];
+	player addAction [
+		"<t color='#00ff00'>Open Range Controls</t>",
+		{player setVariable ["Cav_showRangeActions",true]},
+		nil,
+		1,
+		false,
+		false,
+		"",
+		"(typeOf player == 'B_recon_F') && !(player getVariable ['Cav_showRangeActions',false])"
+	];
 	
-	//player addAction ["<t color='#00ff00'>    Rifle Range - Start</t>",{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,249,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 0"];
-	//player addAction ["<t color='#ff0000'>    Rifle Range - Stop</t>",{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,249,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 1"];
-	//player addAction ["<t color='#00ff00'>        Hit Indicators On</t>",{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,248,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 0)"];
-	//player addAction ["<t color='#ff0000'>        Hit Indicators Off</t>",{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,248,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 1)"];
+	player addAction [
+		"<t color='#ff0000'>Collapse Range Controls</t>",
+		{player setVariable ["Cav_showRangeActions",false]},
+		nil,
+		250,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"
+	];
 	
-	player addAction ["<t color='#00ff00'>    Killhouse - Start</t>",{[["killhouse"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,247,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && killhouse == 0"];
-	player addAction ["<t color='#ff0000'>    Killhouse - Stop</t>",{[["killhouse"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,247,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && killhouse == 1"];
-	player addAction ["<t color='#00ff00'>        Hit Indicators On</t>",{[[kh_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,246,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['killhouseHitIndicators',0] == 0)"];
-	player addAction ["<t color='#ff0000'>        Hit Indicators Off</t>",{[[kh_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,246,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['killhouseHitIndicators',0] == 1)"];
+	player addAction [
+		"<t color='#00ff00'>    Rifle Range - Start</t>",
+		{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		249,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 0"
+	];
+	player addAction [
+		"<t color='#ff0000'>    Rifle Range - Stop</t>",
+		{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		249,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangeRifle == 1"
+	];
+	player addAction [
+		"<t color='#00ff00'>        Hit Indicators On</t>",
+		{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		248,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 0)"
+	];
+	player addAction [
+		"<t color='#ff0000'>        Hit Indicators Off</t>",
+		{[[rr_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		248,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 1)
+	"];
 	
-	player addAction ["<t color='#00ff00'>    Bounding P.R. On</t>",{[[],"scripts\pr.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,245,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && !range_PR"];
-	player addAction ["<t color='#ff0000'>    Bounding P.R. Off</t>",{[[],"scripts\pr.sqf"] remoteExec ["BIS_fnc_execVM"]},nil,245,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && range_PR"];
+	player addAction [
+		"<t color='#00ff00'>    Killhouse - Start</t>",
+		{[["killhouse"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		247,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && killhouse == 0"
+	];
+	player addAction [
+		"<t color='#ff0000'>    Killhouse - Stop</t>",
+		{[["killhouse"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		247,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && killhouse == 1"
+	];
+	player addAction [
+		"<t color='#00ff00'>        Hit Indicators On</t>",
+		{[[kh_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		246,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['killhouseHitIndicators',0] == 0)"
+	];
+	player addAction [
+		"<t color='#ff0000'>        Hit Indicators Off</t>",
+		{[[kh_rangeData],"scripts\range\hitIndicators.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		246,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['killhouseHitIndicators',0] == 1)"
+	];
 	
-	player addAction ["<t color='#ffff00'>    Reset Grenade/Bounding</t>",{[] execVM 'scripts\range\resetGrenBound.sqf'},nil,244,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"];
+	player addAction [
+		"<t color='#00ff00'>    Bounding P.R. On</t>",{[[],"scripts\pr.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		245,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && !range_PR"
+	];
+	player addAction [
+		"<t color='#ff0000'>    Bounding P.R. Off</t>",
+		{[[],"scripts\pr.sqf"] remoteExec ["BIS_fnc_execVM"]},
+		nil,
+		245,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && range_PR"
+	];
 	
-	player addAction ["<t color='#ffff00'>    Range Voice On</t>",{[[kh_rangeData],"scripts\range\toggleRangeVoice.sqf"] remoteExec ["BIS_fnc_execVM",2]},nil,243,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && !rangemaster_voice"];
-	player addAction ["<t color='#ffff00'>    Range Voice Off</t>",{[[kh_rangeData],"scripts\range\toggleRangeVoice.sqf"] remoteExec ["BIS_fnc_execVM",2]},nil,243,false,true,"","(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangemaster_voice"];
+	player addAction [
+		"<t color='#ffff00'>    Reset Grenade/Bounding</t>",
+		{[] execVM 'scripts\range\resetGrenBound.sqf'},
+		nil,
+		244,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"
+	];
+	
+	player addAction [
+		"<t color='#ffff00'>    Range Voice On</t>",
+		{[[kh_rangeData],"scripts\range\toggleRangeVoice.sqf"] remoteExec ["BIS_fnc_execVM",2]},
+		nil,
+		243,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && !rangemaster_voice"
+	];
+	player addAction [
+		"<t color='#ffff00'>    Range Voice Off</t>",
+		{[[kh_rangeData],"scripts\range\toggleRangeVoice.sqf"] remoteExec ["BIS_fnc_execVM",2]},
+		nil,
+		243,
+		false,
+		true,
+		"",
+		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangemaster_voice"
+	];
 };
 
 enableEnvironment false;
