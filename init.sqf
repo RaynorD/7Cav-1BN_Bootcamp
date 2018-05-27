@@ -265,6 +265,26 @@ if((typeOf player) in ["B_recon_F"]) then {
 	];
 };
 
+if(typeOf player in ["B_recon_F","B_recon_medic_F"]) then {
+	di_box addAction [
+	"Save bootcamp loadout to profile", 
+	{
+		_loadout = getUnitLoadout player;
+		systemChat format ["Saved bootcamp loadout: %1", _loadout];
+		profileNamespace setVariable ["Cav_bootcamp_loadout", _loadout];
+		saveProfileNamespace;
+	}];
+	di_box addAction [
+	"Load profile bootcamp loadout", 
+	{
+		if(count (profileNamespace getVariable ["Cav_bootcamp_loadout", []]) == 0) then {
+			hint "You have not set a bootcamp loadout.";
+		} else {
+			player setUnitLoadout (profileNamespace getVariable ["Cav_bootcamp_loadout", nil]);
+		}
+	}];
+};
+
 enableEnvironment false;
 rr_targetCenterOffset = [-0.001,0.21,.3684];
 rr_targetCenterOffsetFront = [-0.001,0.15,.3684];
