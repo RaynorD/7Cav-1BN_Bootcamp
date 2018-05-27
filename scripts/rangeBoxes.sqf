@@ -11,7 +11,7 @@ statement = "this animateSource ['ramp_anim', 1];{if(not(_x isKindOf 'Man'))then
 
 params [["_box", nil],["_type", ""]]; 
 
-if(isNil "_box") exitWith {systemChat "Error rangeBox-9: Box doesn't exist"};
+if(isNil "_box") exitWith {systemChat "Error rangeBox: Box doesn't exist"};
 
 _box allowDamage false; 
 _box enableSimulation false;
@@ -23,19 +23,16 @@ clearBackpackCargoGlobal _box;
 
 switch (_type) do {
 	case "rifle" : {
-		_box addAction ["Rifle Range Loadout (Standard)", {[_this select 1] execVM "loadouts\rifle_range.sqf"}]; 
-		_box addAction ["Rifle Range Loadout (M4)", {[_this select 1] execVM "loadouts\rifle_rangeM4.sqf"}]; 
+		_box addAction ["Rifle Range Loadout", {[_this select 1] execVM "loadouts\rifle_range.sqf"},nil,1.5,true,true,"","true",3]; 
 	};
-
 	case "grenade" : {
-		_box addAction ["Grenade Range Loadout", {[_this select 1] execVM "loadouts\grenade_range.sqf"}];
+		_box addAction ["Grenade Range Loadout", {[_this select 1] execVM "loadouts\grenade_range.sqf"},nil,1.5,true,true,"","true",3];
 	};
-	
 	case "killhouse" : {
-		_box addAction ["Killhouse Loadout", {[_this select 1] execVM "loadouts\killhouse.sqf"}];
+		_box addAction ["Killhouse Loadout", {[_this select 1] execVM "loadouts\killhouse.sqf"},nil,1.5,true,true,"","true",3];
 	};
-	case "bounding" : {
-		_box addAction ["Bounding Range Loadout", {[_this select 1] execVM "loadouts\bounding_range.sqf"}];
+	case "maneuver" : {
+		_box addAction ["Maneuver Course Loadout", {[_this select 1] execVM "loadouts\maneuver_course.sqf"},nil,1.5,true,true,"","true",3];
 	};
 	case "" : {
 	
