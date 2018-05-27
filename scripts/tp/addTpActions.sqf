@@ -1,7 +1,7 @@
 _tpObjects = [
 	[tp_main, "Main"],
-	//[tp_grenade, "Grenade Range"],
-	[tp_assault, "Assault Course"],
+	[tp_grenade, "Grenade Range"],
+	[tp_maneuver, "Maneuver Course"],
 	[tp_kh, "Killhouse"],
 	[tp_rifle, "Rifle Range"]
 ];
