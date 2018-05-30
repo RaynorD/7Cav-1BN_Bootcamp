@@ -43,9 +43,17 @@ if((typeOf player) in ["B_recon_F","B_recon_medic_F"]) then {
 			if(count _loadout > 0) then {
 				[_loadout] spawn {
 					params ["_loadout"];
-					_actionId = player addAction ["<t color='#aa0000'>Load saved bootcamp loadout</t>", {player setUnitLoadout (_this select 3)}, _loadout];
+					_actionId = player addAction ["<t color='#ffff44'>Load saved bootcamp loadout</t>", {
+						player setUnitLoadout (_this select 3);
+						player removeAction (_this select 2);
+						player setVariable ["Cav_bootcamp_loadoutActionRemoved", true];
+					}, _loadout];
+					
 					waitUntil {sleep 1; !(player in list trg_start)};
-					player removeAction _actionId;
+					
+					if(isNil {player getVariable ["Cav_bootcamp_loadoutActionRemoved", nil]}) then {
+						player removeAction _actionId;
+					};
 				};
 			} else {
 				diag_log "7Cav Bootcamp: _loadout was count 0";
