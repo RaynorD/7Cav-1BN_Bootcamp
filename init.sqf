@@ -108,6 +108,7 @@ if((typeOf player) in ["B_Soldier_F"]) then {
 if((typeOf player) in ["B_recon_F"]) then {
 	grad_cam_laptop addAction ["Take Picture", {[true] remoteExec ["Cav_setAllowDamage"];signGrad setObjectTextureGlobal [0, "image\face.paa"];sleep 1;_thing1 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing1 setVelocity [0,0,-1000];sleep 0.5;_thing2 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing2 setVelocity [0,0,-1000];sleep 0.5;_thing3 = "Sh_155mm_AMOS" createVehicle [((getMarkerPos "mkrGrad") select 0), ((getMarkerPos "mkrGrad") select 1), 30];_thing3 setVelocity [0,0,-1000];sleep 1;signGrad setObjectTextureGlobal [0, "image\bootCampgrounds.paa"];[false] remoteExec ["Cav_setAllowDamage"];}];
 	
+	/*
 	player addAction [
 		"<t color='#00ff00'>Open Range Controls</t>",
 		{player setVariable ["Cav_showRangeActions",true]},
@@ -129,7 +130,9 @@ if((typeOf player) in ["B_recon_F"]) then {
 		"",
 		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"
 	];
+	*/
 	
+	/*
 	player addAction [
 		"<t color='#00ff00'>    Rifle Range - Start</t>",
 		{[["rifle"],"scripts\range\rangeMaster.sqf"] remoteExec ["BIS_fnc_execVM"]},
@@ -170,6 +173,7 @@ if((typeOf player) in ["B_recon_F"]) then {
 		"",
 		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && (rangemaster getVariable ['rifleRangeHitIndicators',0] == 1)
 	"];
+	*/
 	
 	player addAction [
 		"<t color='#00ff00'>    Killhouse - Start</t>",
@@ -232,6 +236,7 @@ if((typeOf player) in ["B_recon_F"]) then {
 		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && range_PR"
 	];
 	
+	/*
 	player addAction [
 		"<t color='#ffff00'>    Reset Grenade/Bounding</t>",
 		{[] execVM 'scripts\range\resetGrenBound.sqf'},
@@ -242,7 +247,9 @@ if((typeOf player) in ["B_recon_F"]) then {
 		"",
 		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false])"
 	];
+	*/
 	
+	/*
 	player addAction [
 		"<t color='#ffff00'>    Range Voice On</t>",
 		{[[kh_rangeData],"scripts\range\toggleRangeVoice.sqf"] remoteExec ["BIS_fnc_execVM",2]},
@@ -263,6 +270,7 @@ if((typeOf player) in ["B_recon_F"]) then {
 		"",
 		"(typeOf player == 'B_recon_F') && (player getVariable ['Cav_showRangeActions',false]) && rangemaster_voice"
 	];
+	*/
 };
 
 if(typeOf player in ["B_recon_F","B_recon_medic_F"]) then {
