@@ -11,11 +11,13 @@ Targets popup on range start
 
 if(!isServer) exitWith {};
 
+/*
 _br_targets = [
 	[br_target1, br_target2],
 	[br_target3, br_target4],
 	[br_target5, br_target6]
 ];
+*/
 
 // Sound effects from speakers =========================================================
 _fx_firefight = [
@@ -58,11 +60,14 @@ _soundEffectLoop = {
 };
 
 // Guns shooting over players' heads ============================================================================
+
+/*
 _pr_weapons = [
 	[br_pr_gun1, br_pr_target1, br_pr_gun1base], 
 	[br_pr_gun2, br_pr_target2, br_pr_gun2base], 
 	[br_pr_gun3, br_pr_target3, br_pr_gun3base]
 ];
+*/
 
 _fireRandomly = {
 	_gun = _this select 0;
@@ -84,18 +89,22 @@ if(range_PR) then {
 	range_PR = false;
 	publicVariable "range_PR";
 	
+	/*
 	{
 		deleteVehicle (gunner (_x select 0));
 	} foreach _pr_weapons;
+	*/
 } else {
-	//systemChat "Positive Reinforcement Activated";
+	systemChat "Positive Reinforcement Activated";
 	range_PR = true;
 	publicVariable "range_PR";
-	[_fx_explosions, 7, br_speaker1, 0] spawn _soundEffectLoop;
-	[_fx_explosions, 7, br_speaker2, 2] spawn _soundEffectLoop;
-	[_fx_firefight, 7, br_speaker3, 0] spawn _soundEffectLoop;
-	[_fx_firefight, 7, br_speaker4, 2] spawn _soundEffectLoop;
+	[_fx_explosions, 7, br_speaker_3, 0] spawn _soundEffectLoop;
+	[_fx_explosions, 7, br_speaker_2, 4] spawn _soundEffectLoop;
+	[_fx_firefight, 7, br_speaker_1, 3] spawn _soundEffectLoop;
+	[_fx_firefight, 7, br_speaker_4, 2] spawn _soundEffectLoop;
+	[_fx_firefight, 7, br_speaker_5, 1] spawn _soundEffectLoop;
 
+	/*
 	_gunnersGroup = createGroup west;
 
 	{
@@ -124,14 +133,16 @@ if(range_PR) then {
 			_bomb setVelocity [0,0,-1000];
 		};
 	};
-	
-	/*
-	HelicopterExploSmall
-	M_Titan_AT
-	rhs_rpg7v2_pg7vl
 	*/
+
+	// HelicopterExploSmall
+	// M_Titan_AT
+	// rhs_rpg7v2_pg7vl
+
+	/*
 	_explosionType = "rhs_rpg7v2_pg7vl";
 	_explosionLocations = ["br_pr_bomb1", "br_pr_bomb2", "br_pr_bomb3", "br_pr_bomb4", "br_pr_bomb5", "br_pr_bomb6", "br_pr_bomb7", "br_pr_bomb8"];
 	
 	[_explosionType, _explosionLocations] spawn _createRandomExplosions;
+	*/
 };
