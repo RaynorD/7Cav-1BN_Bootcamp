@@ -1,8 +1,8 @@
 grad_cam = "camera" camCreate [0,0,0];
 grad_cam camSetPos [
-	getPos grad_cam_obj select 0,
-	getPos grad_cam_obj select 1,
-	(getPos grad_cam_obj select 2) + 1.5
+    getPos grad_cam_obj select 0,
+    getPos grad_cam_obj select 1,
+    (getPos grad_cam_obj select 2) + 1.5
 ];
 
 grad_cam cameraEffect ["Internal", "Back", "pip_grad"];

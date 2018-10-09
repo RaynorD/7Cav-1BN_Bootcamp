@@ -16,16 +16,16 @@ _unit setCombatMode "YELLOW";
 _targetCenterOffset = [-0.001,0.21,.3684];
 
 while{true} do {
-	_unit doTarget objNull;
-	waitUntil {(player getVariable ["rr_bulletCamSubscription", -1]) >= 0};
-	
-	_target = _targets select (floor(random 8));
-	_unit reveal _target;
-	_unit doTarget _target;
-	_unit doWatch _target;
-	sleep 0.5;
-	
-	_unit forceWeaponFire [currentWeapon _unit, "single"];
-	
-	sleep 4.5;
+    _unit doTarget objNull;
+    waitUntil {(player getVariable ["rr_bulletCamSubscription", -1]) >= 0};
+    
+    _target = _targets select (floor(random 8));
+    _unit reveal _target;
+    _unit doTarget _target;
+    _unit doWatch _target;
+    sleep 0.5;
+    
+    _unit forceWeaponFire [currentWeapon _unit, "single"];
+    
+    sleep 4.5;
 };
