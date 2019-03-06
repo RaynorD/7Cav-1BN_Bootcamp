@@ -19,7 +19,6 @@ class Header
 };
 
 #include "taw_vd\GUI.h"
-#include "cav_ranges_data.cpp"
 
 class CfgFunctions
 {
