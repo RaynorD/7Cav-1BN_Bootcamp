@@ -68,7 +68,7 @@ class RscListBox {
 		autoScrollSpeed = -1;
 		autoScrollDelay = 5;
 		autoScrollRewind = 0;
-	}
+	};
 };
 
 class RscCheckBox {
@@ -234,7 +234,7 @@ class RscShortcutButton {
 		font = "PuristaMedium";
 		color = "#E5E5E5";
 		align = "left";
-	};	
+	};
 };
 
 class RscControlsGroup {
@@ -483,7 +483,7 @@ class TAW_VDMenu {
 			toolTip = "View distance while operating a UAV/UGV";
 			onSliderPosChanged = "[4, _this select 1] call TAWVD_fnc_onSliderChanged;";
 			y = .45 - (1 / 25);
-		}
+		};
 
 		//Values (RscEdit Butons)
 		class VD_onFoot_Edit : RscEdit {
@@ -570,7 +570,7 @@ class TAW_VDMenu {
 			tooltip = "Sync object rendering with view rendering";
 			onCheckedChanged = "if((_this select 1) == 1) then {tawvd_syncObject = true;ctrlEnable [2941,false]; ctrlEnable [2942,false];} else {tawvd_syncObject = false; ctrlEnable [2942,true]; ctrlEnable [2941,true];};";
 			w = 1 * GUI_GRID_CENTER_W;
-			h = 1 * GUI_GRID_CENTER_H; 
+			h = 1 * GUI_GRID_CENTER_H;
 		};
 
 		class ObjectSynctext : RscText {
